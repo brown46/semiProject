@@ -6,27 +6,25 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 가입 페이지</title>
-<script src="./resource/js/myJavascript.js" type="text/javascript" 	></script>
+
+
 </head>
 <body>
 	
-	<form action="./enroll" method="post">
+	<form action="./dupChk" method="post">
 		<div>
 			<label>아이디 :</label>		
-			<input type="text" name=id>
+			<input type="text" name=id  >
 			
 		</div>
-		<span>
-			<button type="button">아이디 중복 체크</button>
-		</span>
+
 		<div>
 			<label>닉네임 :</label>		
-			<input type="text" name=nickname>
+			<input type="text" name=nickname >
 		</div>
-		<span>
-			<button type="button">닉네임 중복 체크</button>
-		</span>
-		
+			<button id="dupChk" type="button" >아이디/닉네임 중복 체크</button>
+	</form>	
+	<form action="./enroll" method="post">
 		<div>
 			<label>이메일 :</label> 
 			<input type="text" name=email>		
@@ -43,10 +41,11 @@
 		
 		<button type="submit">회원 가입</button>
 		
-		<c:if test=""></c:if>
-		
 	</form>
-	
-	
+
+
 </body>
 </html>
+
+<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+<script src="./resource/js/myJavascript.js" type="text/javascript" 	></script>

@@ -25,16 +25,22 @@ public class EnrollController extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	request.getRequestDispatcher("/WEB-INF/view/enroll.jsp").forward(request, response);
+    }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id= request.getParameter("id");
-		String nickname= request.getParameter("id");
+		String id= (String) request.getSession().getAttribute("id");
+		String nickname=  (String) request.getSession().getAttribute("nickname");
 		String password= request.getParameter("password");	
 		String email = request.getParameter("email");
-	
+		System.out.println(id);
+		System.out.println(nickname);
 		MemberService ms = new MemberService();
 		MemberVO vo = new MemberVO();
 		vo.setId(id);
@@ -43,7 +49,12 @@ public class EnrollController extends HttpServlet {
 		vo.setEmail(email);
 		vo.setMgr("F");
 		
-		ms.enroll(vo);
+		int result= ms.enroll(vo);
+		if(result==1) {
+			response.sendRedirect(request.getContextPath()+"/");
+		}else {
+			request.getRequestDispatcher("/WEB-INF/view/error.jsp").forward(request, response);
+		}
 		
 	}
 

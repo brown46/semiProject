@@ -8,5 +8,9 @@
 </head>
 <body>
 메인페이지
+<a href="./enroll">회원가입</a>
+<script type="text/javascript">
+loaction.href="<%=request.getContextPath()%>/enroll"
+</script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 window.onload= function validCheck(){
     var form = document.forms[0];
     form.id.addEventListener("input", function(){
@@ -70,6 +71,42 @@ window.onload= function validCheck(){
 
 function createErrormessage(message){
     var div= document.createElement("div");
+    div.className += 'error';
     div.innerText=message;
     return div;
 }
+
+$("#dupChk").on("click",handlerClickBtnDupChk);
+
+	function handlerClickBtnDupChk(){
+        var form = document.forms[0];
+        var id = form.id.value;
+        var nickname= form.nickname.value;
+		console.log("btnEnroll눌림");
+        window.open("${contextPath}/myProject/dupChk?id="+id+"&nickname="+nickname,"","width=500,height=300");
+		// alert('${idCount}');
+	}
+
+// $("#dupChk").click(checkDupId);
+// 	function checkDupId() {
+// 		$.ajax({url:"<%=request.getContextPath()%>/dupChk"
+// 			  , type:"post" 
+// 			  , async:false
+// 			  , contentType: "application/json; charset:utf-8"
+// 			  , data: {id: $("input").first().val(), nickname :$("#nickname").val()} 
+// 			  , success: function(result){
+// 				             console.log(result);
+// 				             if(result==1){
+// 					             $("#dupId").next().html("중복아이디가 있습니다. 다시 입력해주세요");
+// 					             $("#dupId").next().css("color","red");				
+// 				             }else{
+// 					             $("#dupId").next().html("사용가능한 아이디입니다.");
+// 					             $("#dupId").next().css("color","blue");
+// 				             }
+// 			             }
+// 			, error: function(request, status, error){
+// 				alert(request.status);
+// 			}
+			
+// 			});
+// 	}
