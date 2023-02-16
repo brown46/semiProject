@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kh.member.model.service.MemberService;
+import kh.member.model.vo.MemberVO;
+
 /**
  * Servlet implementation class EnrollController
  */
@@ -31,7 +34,17 @@ public class EnrollController extends HttpServlet {
 		String nickname= request.getParameter("id");
 		String password= request.getParameter("password");	
 		String email = request.getParameter("email");
-		System.out.println(id);
+	
+		MemberService ms = new MemberService();
+		MemberVO vo = new MemberVO();
+		vo.setId(id);
+		vo.setNickname(nickname);
+		vo.setPassword(password);
+		vo.setEmail(email);
+		vo.setMgr("F");
+		
+		ms.enroll(vo);
+		
 	}
 
 }

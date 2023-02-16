@@ -18,24 +18,28 @@
 		</div>
 		<span>
 			<button type="button">아이디 중복 체크</button>
-			</span>
+		</span>
 		<div>
 			<label>닉네임 :</label>		
 			<input type="text" name=nickname>
-		<button type="button">닉네임 중복 체크</button>
 		</div>
+		<span>
+			<button type="button">닉네임 중복 체크</button>
+		</span>
+		
 		<div>
 			<label>이메일 :</label> 
 			<input type="text" name=email>		
 		</div>
 		<div>
 			<label>비밀번호 :</label> 
-			<input type="password" name=password>		
+			<input type="password" name=password>
 		</div>
 		<div>
 			<label>비밀번호 확인 :	</label> 		
 			<input type="password" name=passwordChk>
 		</div>
+		
 		
 		<button type="submit">회원 가입</button>
 		

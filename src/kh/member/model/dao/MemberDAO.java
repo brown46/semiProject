@@ -1,5 +1,5 @@
 package kh.member.model.dao;
 
-public class UserDAO {
+public class MemberDAO {
 
 }
