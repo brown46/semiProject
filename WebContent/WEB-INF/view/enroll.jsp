@@ -14,8 +14,11 @@
 		<div>
 			<label>아이디 :</label>		
 			<input type="text" name=id>
-		<button type="button">아이디 중복 체크</button>
+			
 		</div>
+		<span>
+			<button type="button">아이디 중복 체크</button>
+			</span>
 		<div>
 			<label>닉네임 :</label>		
 			<input type="text" name=nickname>
