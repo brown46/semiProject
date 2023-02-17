@@ -29,5 +29,9 @@ public class MemberDAO {
 		int count= session.selectOne("memberMapper.nickDupChk",nickVo);
 		return count;
 	}
+	public MemberVO login(MemberVO vo) {
+		vo = session.selectOne("memberMapper.login", vo);
+		return vo;
+	}
 	
 }

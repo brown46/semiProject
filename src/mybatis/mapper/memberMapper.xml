@@ -13,4 +13,7 @@
 	<select id="idDupChk" resultType="int">
 		SELECT COUNT(*) FROM MEMBER_T WHERE id=#{id}
 	</select>
+	<select id="login" resultType="kh.member.model.vo.MemberVO">
+		SELECT * FROM MEMBER_T WHERE id=#{id} AND PASSWORD=#{password}
+	</select>
 </mapper>

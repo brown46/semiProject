@@ -37,5 +37,12 @@ public class MemberService {
 		return result;
 	}
 
+	public MemberVO login(MemberVO vo) {
+		MemberDAO dao = new MemberDAO();
+		vo= dao.login(vo);
+		dao.close();
+		return vo;
+	}
+
 	
 }

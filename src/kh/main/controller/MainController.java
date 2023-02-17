@@ -26,7 +26,10 @@ public class MainController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("WEB-INF/view/index.jsp").forward(request, response);;
+		if(request.getSession().getAttribute("lgnss")==null) {
+			request.getRequestDispatcher("WEB-INF/view/index.jsp").forward(request, response);			
+		}
+		
 	}
 
 	/**
