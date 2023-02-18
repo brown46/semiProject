@@ -7,11 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 가입 페이지</title>
-
-
+<%@ include file="/WEB-INF/view/module/css_js_import.jsp" %>
 </head>
 <body>
-	
+<jsp:include page="/WEB-INF/view/header.jsp" />	
 	<form action="./dupChk" method="post">
 		<div>
 			<label>아이디 :</label>		

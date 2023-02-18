@@ -1,18 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
+<%@ include file="/WEB-INF/view/module/css_js_import.jsp" %>
 </head>
 <body>
 <c:choose>
-	<c:when test="${nickCount eq 0 && idCount eq 0 }"><h1>ม฿บน พฦดิ</h1></c:when>
-	<c:when test="${nickCount eq 0 && idCount ne 0 }"><h1>พฦภฬต๐ ม฿บน</h1></c:when>
-	<c:when test="${nickCount ne 0 && idCount eq 0 }"><h1>ดะณืภำ ม฿บน</h1></c:when>
-	<c:when test="${nickCount ne 0 && idCount ne 0 }"><h1>ตัดู ม฿บน</h1></c:when>
+	<c:when test="${nickCount eq 0 && idCount eq 0 }"><h1>์ค‘๋ณต ์•๋</h1></c:when>
+	<c:when test="${nickCount eq 0 && idCount ne 0 }"><h1>์•์ด๋”” ์ค‘๋ณต</h1></c:when>
+	<c:when test="${nickCount ne 0 && idCount eq 0 }"><h1>๋๋ค์ ์ค‘๋ณต</h1></c:when>
+	<c:when test="${nickCount ne 0 && idCount ne 0 }"><h1>๋‘๋ค ์ค‘๋ณต</h1></c:when>
 </c:choose>
 
 </body>

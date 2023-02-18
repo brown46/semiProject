@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper" >
+	<select id="selectPage" parameterType="map" resultType="kh.member.model.vo.BoardVO">
+		SELECT POSTID, POSTNAME,ID, NICKNAME, GAMENAME
+     , NOWDATE, CONTENTS FROM (SELECT ROWNUM AS N
+                                    , POSTID
+                                    , POSTNAME
+                                    , ID
+                                    , NICKNAME
+                                    , GAMENAME
+                                    , NOWDATE
+                                    , CONTENTS
+                                 FROM (SELECT * FROM POST_T ORDER BY NOWDATE DESC)
+                                 )
+                         WHERE N BETWEEN #{start} AND #{end}
+	</select>
+	<select id="getNickname" resultType="string">
+		SELECT NICKNAME FROM MEMBER_T WHERE ID =#{id}
+	</select>
+	
+	<select id="getRowCount" resultType="int" >
+		SELECT COUNT(*) FROM POST_T
+	</select>
+	<select id="getNameRowCount" resultType="int" >
+		SELECT COUNT(*) FROM POST_T WHERE GAMENAME=#{name}
+	</select>
+	<select id="getGenreRowCount" resultType="int" >
+		SELECT COUNT(*) FROM GR_GA_T WHERE GENRENAME=#{genre}
+	</select>
+	<select id="searchName" parameterType="kh.member.model.vo.SearchDTO" resultType="kh.member.model.vo.BoardVO">
+		SELECT POSTID, POSTNAME,ID, NICKNAME, GAMENAME
+     , NOWDATE, CONTENTS FROM (SELECT ROWNUM AS N
+                                    , POSTID
+                                    , POSTNAME
+                                    , ID
+                                    , NICKNAME
+                                    , GAMENAME
+                                    , NOWDATE
+                                    , CONTENTS
+                                 FROM (SELECT * FROM POST_T ORDER BY NOWDATE DESC) WHERE GAMENAME= #{keyword}
+                                 )
+                         WHERE N BETWEEN #{start} AND #{end}
+	</select>
+	<select id="searchGenre" parameterType="kh.member.model.vo.SearchDTO" resultType="string">
+		SELECT GAMENAME FROM GR_GA_T WHERE GENRENAME = #{keyword}
+	</select>
+	
+</mapper>

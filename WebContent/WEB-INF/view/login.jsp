@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
+<%@ include file="/WEB-INF/view/module/css_js_import.jsp" %>
 </head>
 <body>
 	<form action="./login" method="post">
