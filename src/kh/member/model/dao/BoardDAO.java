@@ -80,4 +80,9 @@ public class BoardDAO {
 		int result = session.insert("boardMapper.addGameGenre",gg);
 		return result;
 	}
+
+	public List<BoardVO> getMyPage(SearchDTO dto) {
+		List<BoardVO> dataList = session.selectList("boardMapper.getMyPage",dto);
+		return dataList;
+	}
 }

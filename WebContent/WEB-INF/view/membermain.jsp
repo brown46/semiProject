@@ -11,6 +11,7 @@
 <jsp:include page="/WEB-INF/view/header.jsp" />
 <div>
 회원 메인페이지
+</div>
 <form action="./search">
 <select name="kinds">
         <option value="name" selected> 이름으로 검색
@@ -29,6 +30,8 @@
 <div>
 	<a href="./posting">게시글 작성</a>
 </div>
+<div>
+장르 추가 요청
 </div>
 </body>
 <script type="text/javascript">

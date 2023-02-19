@@ -7,7 +7,7 @@
 	<insert id="enroll" parameterType="kh.member.model.vo.MemberVO">
 		INSERT INTO MEMBER_T VALUES(#{id}, #{nickname}, #{email},#{password},'F')
 	</insert>
-	<select id="nickDupChk" resultType="int">
+	<select id="nickDupChk" parameterType="kh.member.model.vo.MemberVO" resultType="int">
 		SELECT COUNT(*) FROM MEMBER_T WHERE NICKNAME=#{nickname}
 	</select>
 	<select id="idDupChk" resultType="int">
@@ -16,4 +16,13 @@
 	<select id="login" resultType="kh.member.model.vo.MemberVO">
 		SELECT * FROM MEMBER_T WHERE id=#{id} AND PASSWORD=#{password}
 	</select>
+	<update id="updateNick" parameterType="kh.member.model.vo.MemberVO" >
+		UPDATE MEMBER_T SET NICKNAME = #{nickname} WHERE ID=#{id}
+	</update>
+	<update id="updateEmail" parameterType="kh.member.model.vo.MemberVO" >
+		UPDATE MEMBER_T SET EMAIL = #{email} WHERE ID=#{id}
+	</update>
+	<update id="updatePassword" parameterType="kh.member.model.vo.MemberVO" >
+		UPDATE MEMBER_T SET PASSWORD = #{password} WHERE ID=#{id}
+	</update>
 </mapper>

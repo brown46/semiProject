@@ -15,16 +15,16 @@ import kh.member.model.vo.BoardVO;
 import kh.member.model.vo.MemberVO;
 
 /**
- * Servlet implementation class BoardController
+ * Servlet implementation class MyPostingsController
  */
-@WebServlet("/board")
-public class BoardController extends HttpServlet {
+@WebServlet("/myposting")
+public class MyPostingsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardController() {
+    public MyPostingsController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,6 +33,7 @@ public class BoardController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String pageNumber = request.getParameter("p");
 		
 		int pNum;
@@ -70,9 +71,11 @@ public class BoardController extends HttpServlet {
 		cookie.setMaxAge(60 * 60 * 24 * 5);
 		response.addCookie(cookie);
 		
-		BoardService service = new BoardService();
-		List<BoardVO> boardList = service.getPage(pNum, Integer.parseInt(cnt));
 		
+		BoardService service = new BoardService();
+		MemberVO vo = (MemberVO) request.getSession().getAttribute("lgnss");
+		String id = vo.getId();
+		List<BoardVO> boardList = service.getMyPage(id, pNum, Integer.parseInt(cnt));
 		int rowCount = service.getRowCount();
 		int pageCount =0;
 		if (rowCount % Integer.parseInt(cnt) == 0) {
@@ -97,10 +100,8 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("pageEnd", end);
 				request.setAttribute("cnt", cnt);
 				request.setAttribute("dataList", boardList);
-				request.getRequestDispatcher("/WEB-INF/view/board.jsp").forward(request,response);
-		
+				request.getRequestDispatcher("/WEB-INF/view/myPostings.jsp").forward(request, response);
 	}
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

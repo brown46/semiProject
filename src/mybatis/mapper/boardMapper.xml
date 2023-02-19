@@ -63,4 +63,19 @@
 	<insert id="addGameGenre" parameterType="kh.member.model.vo.GameGenreVO" >
 		INSERT INTO GR_GA_T VALUES(#{gameName}, #{genreName})
 	</insert>
+	<select id="getMyPage" parameterType="kh.member.model.vo.SearchDTO" resultType="kh.member.model.vo.BoardVO">
+		SELECT POSTID, POSTNAME,ID, NICKNAME, GAMENAME
+     , NOWDATE, CONTENTS FROM (SELECT ROWNUM AS N
+                                    , POSTID
+                                    , POSTNAME
+                                    , ID
+                                    , NICKNAME
+                                    , GAMENAME
+                                    , NOWDATE
+                                    , CONTENTS
+                                 FROM (SELECT * FROM POST_T ORDER BY NOWDATE DESC) WHERE ID= #{keyword}
+                                 )
+                         WHERE N BETWEEN #{start} AND #{end}
+	</select>
+	
 </mapper>

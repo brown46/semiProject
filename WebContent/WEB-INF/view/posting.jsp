@@ -16,7 +16,7 @@
 	<input name="postTitle" type="text">
 	<label>게임 이름</label>
 	<input name="gameTitle" type="text">
-	<div style="display: block">
+	<div id="genreList" style="display: none">
 		<ul id="list">
 		<c:forEach varStatus="cnt" items="${genreList }" var="genre">
 			<li><a id="select${cnt.index }" href="#" >${genre }	</a> </li>		
@@ -24,7 +24,9 @@
 		</ul>
 		<button id="close" type="button">닫기</button>	
 	</div>
-	<button id="open" type="button">장르 선택</button>
+	<div>
+		<button id="open" type="button" >장르 선택</button>
+	</div>
 	
 	<div id="selected">
 	</div>
@@ -73,6 +75,17 @@
 		 });
 	}
 	
+	$("#open").on("click",open);
+	function open(){
+		$("#genreList").css("display","block");
+		$("#open").css("display","none");
+	}
+	
+	$("#close").on("click",close);
+	function close(){
+		$("#genreList").css("display","none");
+		$("#open").css("display","block");
+	}
 </script>
 	  
 </html>

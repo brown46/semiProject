@@ -33,5 +33,17 @@ public class MemberDAO {
 		vo = session.selectOne("memberMapper.login", vo);
 		return vo;
 	}
+	public int updateNick(MemberVO vo) {
+		int result =session.update("memberMapper.updateNick", vo);
+		return result;
+	}
+	public int updateEmail(MemberVO vo) {
+		int result =session.update("memberMapper.updateEmail", vo);
+		return result;
+	}
+	public int updatePassword(MemberVO vo) {
+		int result =session.update("memberMapper.updatePassword", vo);
+		return result;
+	}
 	
 }

@@ -59,6 +59,7 @@ public class BoardService {
 		dto.setEnd( pNum*cnt);
 		dto.setKeyword(keyword);
 		List<String> gameList= dao.searchGenre(dto);
+		dao.close();
 		return gameList;
 	}
 
@@ -90,7 +91,7 @@ public class BoardService {
 		BoardDAO dao = new BoardDAO();
 		int count = dao.addGameGenre(gg);
 		dao.commit();
-//		dao.close();
+		dao.close();
 		return count;
 	}
 
@@ -102,6 +103,17 @@ public class BoardService {
 			return false;
 		}
 		return true;
+	}
+
+	public List<BoardVO> getMyPage(String id,int pNum, int cnt) {
+		BoardDAO dao = new BoardDAO();
+		SearchDTO dto = new SearchDTO();
+		dto.setStart((pNum-1)*cnt+1);
+		dto.setEnd( pNum*cnt);
+		dto.setKeyword(id);
+		List<BoardVO> dataList= dao.getMyPage(dto);
+		dao.close();
+		return dataList;
 	}
 
 

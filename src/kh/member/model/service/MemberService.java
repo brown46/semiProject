@@ -44,5 +44,31 @@ public class MemberService {
 		return vo;
 	}
 
+	public int updateNick(MemberVO vo) {
+		MemberDAO dao = new MemberDAO();
+		int result = dao.updateNick(vo);
+		dao.commit();
+		dao.close();
+		return result;
+	}
+
+	public int updateEmail(MemberVO vo) {
+		MemberDAO dao = new MemberDAO();
+		int result = dao.updateEmail(vo);
+		dao.commit();
+		dao.close();
+		return result;
+	}
+
+	public int updatePassword(MemberVO vo) {
+		MemberDAO dao = new MemberDAO();
+		int result = dao.updatePassword(vo);
+		dao.commit();
+		dao.close();
+		return result;
+	}
+	
+	
+
 	
 }
