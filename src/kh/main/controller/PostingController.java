@@ -79,7 +79,7 @@ public class PostingController extends HttpServlet {
 		BoardService service = new  BoardService();
 		BoardVO bvo = new BoardVO();
 		
-		int count= service.getNameRowCount(gameTitle);
+		int count= service.getGameNameCount(gameTitle); // 수정해야됨 game_t에서 검색으로 
 		System.out.println(count);
 		
 //		private int postId;
@@ -123,7 +123,7 @@ public class PostingController extends HttpServlet {
 			
 		}
 		
-		
+		response.sendRedirect(request.getContextPath()+"/board");
 	}
 
 }

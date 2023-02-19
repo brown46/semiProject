@@ -44,7 +44,7 @@
 <script type="text/javascript">
 	$("#check").on("click",open);
 	function open(){
-		if(${info.password} == $("#inputpass").val()){			
+		if("${info.password}" === $("#inputpass").val()){			
 			$("#update").css("display","block");
 			$("#checkpassword").css("display","none");
 		}else{
@@ -70,7 +70,9 @@
 			dataType:"text",
 			success: function(data){
 				console.log(data);
+				if(data!=''){			
 				alert(data);
+				}
 			},
 			error: function(){
 				console.log("실패");
@@ -84,16 +86,6 @@
 
 			},
 		 });
-	}
-	window.onload= function validCheck(){
-		<c:if test="${updateError}==true">
-			alert(${updateMsg});
-		</c:if>
-		<c:if test="${updateError}==false">
-			alert(${updateMsg});
-			location.href="<%=request.getContextPath()%>/logout";
-		</c:if>
-
 	}
 </script>
 </html>

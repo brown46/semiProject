@@ -20,7 +20,9 @@
 	<select id="getNickname" resultType="string">
 		SELECT NICKNAME FROM MEMBER_T WHERE ID =#{id}
 	</select>
-	
+	<select id="getGameNameCount" resultType="int" >
+		SELECT COUNT(*) FROM GAME_T WHERE GAMENAME=#{name}
+	</select>
 	<select id="getRowCount" resultType="int" >
 		SELECT COUNT(*) FROM POST_T
 	</select>

@@ -46,4 +46,14 @@ public class MemberDAO {
 		return result;
 	}
 	
+	public int deleteAllPost(MemberVO vo) {
+		int result =session.delete("memberMapper.deleteAllPost",vo);
+		return result;
+	}
+	
+	public int withdrawal(MemberVO vo) {
+		int result =session.delete("memberMapper.withdrawal",vo);
+		return result;
+	}
+	
 }

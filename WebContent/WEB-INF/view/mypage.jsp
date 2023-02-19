@@ -18,6 +18,7 @@ ${sessionScope.lgnss.nickname }님
 
 <h1><a href="<%=request.getContextPath()%>/myposting">내 게시물 확인 </a> </h1>
 <h1> <a href="<%=request.getContextPath()%>/updateinfo">회원 정보 수정</a> </h1>
+<h1> <a href="<%=request.getContextPath()%>/withdrawal">회원 탈퇴</a> </h1>
 
 
 

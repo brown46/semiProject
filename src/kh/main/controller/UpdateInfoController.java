@@ -56,7 +56,7 @@ public class UpdateInfoController extends HttpServlet {
 		boolean error =false;
 		//닉네임 변경이 없을 경우
 		//닉네임 변경이 있을 경우 - null, 중복 체크 후 업데이트
-		if((vo.getNickname()!=nickname) && (nickname!=null)) {
+		if(!(vo.getNickname().equals(nickname)) && (nickname!=null)) {
 			MemberVO dupNick = new MemberVO();
 			dupNick.setNickname(nickname);
 			int result= service.nickDupChk(dupNick);
@@ -109,7 +109,7 @@ public class UpdateInfoController extends HttpServlet {
 				service.updatePassword(pvo);
 				msg+="비밀번호 변경이 완료되었습니다.";
 				System.out.println("비밀번호 변경");
-				System.out.println(request.getContextPath()+"/logout");
+//				System.out.println(request.getContextPath()+"/logout");
 //				response.sendRedirect(request.getContextPath()+"/logout");
 				//업데이트 완료
 			}

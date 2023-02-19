@@ -25,4 +25,11 @@
 	<update id="updatePassword" parameterType="kh.member.model.vo.MemberVO" >
 		UPDATE MEMBER_T SET PASSWORD = #{password} WHERE ID=#{id}
 	</update>
+	
+	<delete id="deleteAllPost">
+		DELETE FROM POST_T WHERE ID =#{id}
+	</delete>
+	<delete id="withdrawal">
+		DELETE FROM MEMBER_T WHERE ID = #{id}
+	</delete>
 </mapper>

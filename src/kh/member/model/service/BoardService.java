@@ -116,6 +116,13 @@ public class BoardService {
 		return dataList;
 	}
 
+	public int getGameNameCount(String gameTitle) {
+		BoardDAO dao = new BoardDAO();
+		int gameNameCount=dao.getGameNameCount(gameTitle);
+		dao.close();
+		return gameNameCount;
+	}
+
 
 
 

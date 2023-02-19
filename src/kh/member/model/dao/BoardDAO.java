@@ -85,4 +85,9 @@ public class BoardDAO {
 		List<BoardVO> dataList = session.selectList("boardMapper.getMyPage",dto);
 		return dataList;
 	}
+
+	public int getGameNameCount(String gameTitle) {
+		int rowCount= session.selectOne("boardMapper.getGameNameCount",gameTitle);
+		return rowCount;
+	}
 }
