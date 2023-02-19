@@ -70,9 +70,9 @@ window.onload= function validCheck(){
 
 
 function createErrormessage(message){
-    var div= document.createElement("div");
-    div.className += 'error';
-    div.innerText=message;
+            var div= document.createElement("div");
+            div.className += 'error';
+            div.innerText=message;
     return div;
 }
 

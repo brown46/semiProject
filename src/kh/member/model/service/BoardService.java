@@ -62,6 +62,49 @@ public class BoardService {
 		return gameList;
 	}
 
+	public List<String> getGenre() {
+		BoardDAO dao = new BoardDAO();
+		List<String> genreList= dao.getGenre();
+		
+		dao.close();
+		return genreList;
+	}
+
+	public int posting(BoardVO bvo) {
+		BoardDAO dao = new BoardDAO();
+		int result =dao.posting(bvo);
+		dao.commit();
+		dao.close();
+		return result;
+	}
+
+	public int addGame(String gameTitle) {
+		BoardDAO dao = new BoardDAO();
+		int result= dao.addGame(gameTitle);
+		dao.commit();
+		dao.close();
+		return result;
+	}
+
+	public int addGameGenre(GameGenreVO gg) {
+		BoardDAO dao = new BoardDAO();
+		int count = dao.addGameGenre(gg);
+		dao.commit();
+//		dao.close();
+		return count;
+	}
+
+	public boolean getGGcount(GameGenreVO gg) {
+		BoardDAO dao = new BoardDAO();
+		int count =dao.getGGcount(gg);
+		dao.close();
+		if(count==0) {
+			return false;
+		}
+		return true;
+	}
+
+
 
 
 }

@@ -47,5 +47,20 @@
 	<select id="searchGenre" parameterType="kh.member.model.vo.SearchDTO" resultType="string">
 		SELECT GAMENAME FROM GR_GA_T WHERE GENRENAME = #{keyword}
 	</select>
+	<select id="getGenre" resultType="string">
+		SELECT * FROM GENRE_T
+	</select>
+	<insert id="addGame" >
+		INSERT INTO GAME_T VALUES(#{gameTitle})
+	</insert>
 	
+	<insert id="posting" parameterType="kh.member.model.vo.BoardVO">
+		INSERT INTO POST_T VALUES((SELECT NVL(MAX(POSTID), 0) + 1 FROM POST_T),#{postName},#{id},#{nickname},#{gameName},default, #{contents})
+	</insert>
+	<select id="getGGcount" parameterType="kh.member.model.vo.GameGenreVO" resultType="int">
+		SELECT COUNT(*) FROM GR_GA_T WHERE GAMENAME =#{gameName} AND GENRENAME = #{genreName}
+	</select>
+	<insert id="addGameGenre" parameterType="kh.member.model.vo.GameGenreVO" >
+		INSERT INTO GR_GA_T VALUES(#{gameName}, #{genreName})
+	</insert>
 </mapper>

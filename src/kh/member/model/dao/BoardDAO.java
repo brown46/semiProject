@@ -52,7 +52,32 @@ public class BoardDAO {
 
 	public List<String> searchGenre(SearchDTO dto) {
 		List<String> gameList= session.selectList("boardMapper.searchGenre",dto);
-		System.out.println(gameList);
+//		System.out.println(gameList);
 		return gameList;
+	}
+
+	public List<String> getGenre() {
+		List<String> genreList = session.selectList("boardMapper.getGenre");
+		return genreList;
+	}
+
+	public int posting(BoardVO bvo) {
+		int result = session.insert("boardMapper.posting", bvo);
+		return result;
+	}
+
+	public int addGame(String gameTitle) {
+		int result = session.insert("boardMapper.addGame",gameTitle);
+		return result;
+	}
+
+	public int getGGcount(GameGenreVO gg) {
+		int result = session.selectOne("boardMapper.getGGcount",gg);
+		return result;
+	}
+
+	public int addGameGenre(GameGenreVO gg) {
+		int result = session.insert("boardMapper.addGameGenre",gg);
+		return result;
 	}
 }
