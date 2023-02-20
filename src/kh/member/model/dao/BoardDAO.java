@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import connect.OracleConnection;
 import kh.member.model.vo.BoardVO;
+import kh.member.model.vo.CommentVO;
 import kh.member.model.vo.GameGenreVO;
 import kh.member.model.vo.SearchDTO;
 
@@ -99,5 +100,20 @@ public class BoardDAO {
 	public List<String> getGenre(String gameName) {
 		List<String> genreList = session.selectList("boardMapper.findGenre",gameName);
 		return genreList;
+	}
+
+	public int comment(CommentVO vo) {
+		int result = session.insert("boardMapper.comment",vo);
+		return result;
+	}
+
+	public List<CommentVO> getComment(int postId) {
+		List<CommentVO> cList= session.selectList("boardMapper.getComment",postId);
+		return cList;
+	}
+
+	public List<String> getAllGames() {
+		List<String> games =session.selectList("boardMapper.getAllGames");
+		return games;
 	}
 }

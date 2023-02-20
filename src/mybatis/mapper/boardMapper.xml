@@ -85,4 +85,13 @@
 	<select id="findGenre" resultType="string">
 		SELECT GENRENAME FROM GR_GA_T WHERE GAMENAME=#{gameName}
 	</select>
+	<insert id="comment">
+		INSERT INTO CMT_T VALUES((SELECT NVL(MAX(CMTID), 0) + 1 FROM CMT_T),#{cmt}, #{postId},#{nickname},DEFAULT )
+	</insert>
+	<select id="getComment" parameterType="int" resultType="kh.member.model.vo.CommentVO">
+		SELECT * FROM CMT_T WHERE POSTID = #{postId}
+	</select>
+	<select id="getAllGames" resultType="string">
+		SELECT * FROM GAME_T
+	</select>
 </mapper>

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import kh.member.model.dao.BoardDAO;
 import kh.member.model.vo.BoardVO;
+import kh.member.model.vo.CommentVO;
 import kh.member.model.vo.GameGenreVO;
 import kh.member.model.vo.SearchDTO;
 
@@ -136,6 +137,26 @@ public class BoardService {
 		List<String> list= dao.getGenre(gameName);
 		dao.close();
 		return list;
+	}
+
+	public int comment(CommentVO vo) {
+		BoardDAO dao = new BoardDAO();
+		int result =dao.comment(vo);
+		dao.commit();
+		dao.close();
+		return result;
+	}
+
+	public List<CommentVO> getComment(int postId) {
+		BoardDAO dao = new BoardDAO();
+		List<CommentVO> cList= dao.getComment(postId);
+		return cList;
+	}
+
+	public List<String> getAllGames() {
+		BoardDAO dao = new BoardDAO();
+		List<String> games=dao.getAllGames();
+		return games;
 	}
 
 

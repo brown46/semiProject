@@ -38,15 +38,60 @@ ${post.contents }
 
 
 <div>
-댓글 내용
+댓글
+<br>
+<ul>
+닉네임 | 작성일 | 댓글 내용	
+<c:forEach items="${cList }" var="cl">
+<li>${cl.nickname} | ${cl.nowdate} | ${cl.cmt}</li> 
+</c:forEach>
+</ul>
 </div>
 <div>
-댓글창
-<input size="100px">
+<c:choose>
+<c:when test="${! empty lgnss}">
+	<form action="./detail" method="post">
+		<input  name="postid" type="hidden" value="${post.postId }">
+		<label>댓글작성</label>
+		<input id="input" name="comment" size="100px">
+			<button disabled id="submit">작성</button>	
+	</form>
+</c:when>
+<c:otherwise>
+	<input name="postid" type="hidden" value="${post.postId }">
+	<label>댓글작성</label>
+	<input id="textarea" name="comment" size="100px">
+	<button id="dummy" type="button">작성</button>	
+</c:otherwise>
+</c:choose>
+
 </div>
 
 
+<script type="text/javascript">
+	$("#dummy").on("click",toLogin);
+	function toLogin(){
+		alert("로그인 후 작성 가능합니다.");
+		location.href="<%=request.getContextPath()%>/login";
+	}
+	$('#textarea').keypress(function(event){
+	     if ( event.which == 13 ) {
+	         $('#dummy').click();
+	         return false;
+	     }
+	});
 
+	$(function(){
+		$('#input').on('input' ,function(){
+			if($('#input').val()=='')
+				$ ('#submit').attr('disabled', true);
+			else
+				$('#submit').attr('disabled', false);
+		});
+	})
+
+
+</script>
 
 </body>
 </html>

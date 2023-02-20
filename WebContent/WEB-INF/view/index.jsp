@@ -24,7 +24,7 @@
         <option value="genre"> 장르로 검색 
 </select>
 <div>
-	검색 <input id="search" type="text" name="keyword">
+	검색 <input id="search" type="text" name="keyword" placeholder="검색어를 입력해 주세요">
 	<button disabled="true" id="searchbutton"  type="submit">검색 </button>
 </div>
 </form>
