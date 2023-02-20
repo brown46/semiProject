@@ -1,5 +1,6 @@
 package kh.member.model.service;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,7 +67,6 @@ public class BoardService {
 	public List<String> getGenre() {
 		BoardDAO dao = new BoardDAO();
 		List<String> genreList= dao.getGenre();
-		
 		dao.close();
 		return genreList;
 	}
@@ -121,6 +121,21 @@ public class BoardService {
 		int gameNameCount=dao.getGameNameCount(gameTitle);
 		dao.close();
 		return gameNameCount;
+	}
+
+	public BoardVO getDetail(int postId) {
+		BoardDAO dao = new BoardDAO();
+		BoardVO post =dao.getDetail(postId);
+		return post;
+	}
+
+
+
+	public List<String> getGenre(String gameName) {
+		BoardDAO dao = new BoardDAO();
+		List<String> list= dao.getGenre(gameName);
+		dao.close();
+		return list;
 	}
 
 

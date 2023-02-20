@@ -31,7 +31,7 @@
 	<a href="./posting">게시글 작성</a>
 </div>
 <div>
-장르 추가 요청
+	<a href="./genreRequest">장르 추가 요청</a>
 </div>
 </body>
 <script type="text/javascript">

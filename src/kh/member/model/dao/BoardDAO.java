@@ -90,4 +90,14 @@ public class BoardDAO {
 		int rowCount= session.selectOne("boardMapper.getGameNameCount",gameTitle);
 		return rowCount;
 	}
+
+	public BoardVO getDetail(int postId) {
+		BoardVO post = session.selectOne("boardMapper.getDetail",postId);
+		return post;
+	}
+
+	public List<String> getGenre(String gameName) {
+		List<String> genreList = session.selectList("boardMapper.findGenre",gameName);
+		return genreList;
+	}
 }

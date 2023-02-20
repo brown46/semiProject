@@ -61,7 +61,10 @@ public class SearchController extends HttpServlet {
 		if ( keyword== null) { 
 			keyword = keycookie.getValue();
 		}
-		
+		System.out.println("===========1");
+		System.out.println(cookie);
+		System.out.println(kindscookie);
+		System.out.println(keycookie);
 		
 		String cnt = request.getParameter("cnt");
 		if (cnt != null) { // cnt-parameter값- 자체가 없는 경우
@@ -79,13 +82,23 @@ public class SearchController extends HttpServlet {
 				cnt = "10";
 			}
 		}
-			
 		request.setAttribute("kinds", value);
 		request.setAttribute("keyword", keyword);
+		System.out.println("===========2");
+		System.out.println(cnt);
+		System.out.println(value);
+		System.out.println(keyword);
+		
 		cookie = new Cookie("cnt", cnt);
 		kindscookie = new Cookie("kinds", value);
 		keycookie = new Cookie("keyword", keyword);
 		cookie.setMaxAge(60 * 60 * 24 * 5);
+		
+		System.out.println("===========3");
+		System.out.println(cookie);
+		System.out.println(kindscookie);
+		System.out.println(keycookie);
+		
 		response.addCookie(cookie);
 		response.addCookie(kindscookie);
 		response.addCookie(keycookie);
@@ -125,6 +138,10 @@ public class SearchController extends HttpServlet {
 				request.setAttribute("pageEnd", end);
 				request.setAttribute("cnt", cnt);
 				request.setAttribute("dataList", dataList);
+
+				System.out.println(cnt);
+				System.out.println(value);
+				System.out.println(keyword);
 				
 				if(value.equals("name")) {
 					request.setAttribute("dataList", dataList);

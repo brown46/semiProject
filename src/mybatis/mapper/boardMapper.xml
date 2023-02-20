@@ -79,5 +79,10 @@
                                  )
                          WHERE N BETWEEN #{start} AND #{end}
 	</select>
-	
+	<select id="getDetail" parameterType="int" resultType="kh.member.model.vo.BoardVO">
+		SELECT * FROM POST_T WHERE POSTID = #{postId}
+	</select>
+	<select id="findGenre" resultType="string">
+		SELECT GENRENAME FROM GR_GA_T WHERE GAMENAME=#{gameName}
+	</select>
 </mapper>

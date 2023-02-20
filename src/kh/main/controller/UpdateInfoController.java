@@ -1,11 +1,14 @@
 package kh.main.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONObject;
 
 import kh.member.model.service.MemberService;
 import kh.member.model.vo.MemberVO;
@@ -114,7 +117,15 @@ public class UpdateInfoController extends HttpServlet {
 				//업데이트 완료
 			}
 		} 
-		response.getWriter().print(msg);
+		JSONObject obj = new JSONObject();
+		obj.put("msg", msg);
+        obj.put("error", error);
+        System.out.println(obj.toJSONString());
+		response.getWriter().print(obj.toString());
+//		response.getWriter().print(msg);
+//		response.getWriter().print(error);
+		
+		
 		request.getSession().setAttribute("updateError", error);
 		request.getSession().setAttribute("updateMsg", msg);
 

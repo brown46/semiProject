@@ -67,12 +67,19 @@
 					newPwd:newPwd,
 					chkNewPwd:chkNewPwd},
 			type : "post",
-			dataType:"text",
+			dataType:"json",
 			success: function(data){
-				console.log(data);
-				if(data!=''){			
-				alert(data);
+				var msg = data.msg
+				var error = data.error
+				if(msg!=''){					
+					if(error==true){
+					alert(msg);										
+					}else{
+						alert(msg);
+						location="<%=request.getContextPath()%>/logout";
+					}	
 				}
+				
 			},
 			error: function(){
 				console.log("실패");

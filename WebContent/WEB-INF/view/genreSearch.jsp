@@ -15,8 +15,9 @@
 <jsp:include page="/WEB-INF/view/header.jsp" />	
 	<h2>검색된 목록(장르별)</h2>
 	<c:url var="searchUrl" value="/search" />
-	
 	<form action="${searchUrl }">
+	<input type="hidden" name="kinds" value="${kinds }">
+	<input type="hidden" name="keyword" value="${keyword }">
 		<div>
 			<select name="cnt" onchange="submit();">
 				<option value="2"${requestScope.cnt eq 2 ? "selected" : "" }>2개</option>
@@ -63,4 +64,9 @@
 
 	</div>
 </body>
+<script type="text/javascript">
+	
+
+
+</script>
 </html>

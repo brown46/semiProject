@@ -14,6 +14,9 @@
 메인페이지
 </div>
 
+<img alt="" src="">
+
+<object data=""></object>	
 <form action="./search">
 
 <select name="kinds">
