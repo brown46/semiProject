@@ -76,25 +76,7 @@ function createErrormessage(message){
     return div;
 }
 
-$("#dupChk").on("click",handlerClickBtnDupChk);
 
-	function handlerClickBtnDupChk(){
-        var form = document.forms[0];
-        var id = form.id.value;
-        var nickname= form.nickname.value;
-        if(id.length!==0&&nickname.length!==0){
-            window.open("${contextPath}/myProject/dupChk?id="+id+"&nickname="+nickname,"","width=500,height=300");
-
-        }else{
-            if( $("#dupChk").next()!==null){
-                $("#dupChk").next().remove();
-            }
-            var error= createErrormessage("fill all");
-            $("#dupChk").after(error);
-        }
-		console.log("btnEnroll눌림");
-		// alert('${idCount}');
-	}
 
 // $("#dupChk").click(checkDupId);
 // 	function checkDupId() {
