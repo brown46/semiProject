@@ -50,6 +50,7 @@ public class Recommend extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.getSession().removeAttribute("map");
 		BoardService service = new BoardService();
 		String gameList = request.getParameter("input");
 		List<String> list = new ArrayList<>();
@@ -63,17 +64,18 @@ public class Recommend extends HttpServlet {
 		// 장르를 map에 넣고 같은 장르 이름이 나올 때마다 value를 +1
 		Map<String, Integer> map = new HashMap<>();
 		for (String s : list) {
-			List<String> genreList = service.getGenre();
-			for (String st : genreList) {
+			List<String> grgaList = service.getGenre(s);
+			System.out.println(grgaList+"장르들");
+			for (String st : grgaList) {
 				if (map.get(st) == null) {
 					map.put(st, 1);
 				} else {
 					map.put(st, map.get(st) + 1);
 				}
 			}
+			System.out.println(map);
 		}
-		System.out.println(map);
-		
+		request.getSession().setAttribute("map", map);
 	}
 
 }

@@ -61,6 +61,11 @@ public class BoardDAO {
 		List<String> genreList = session.selectList("boardMapper.getGenre");
 		return genreList;
 	}
+	public List<String> getGrGa(String gamename) {
+		List<String> genreList = session.selectList("boardMapper.getGrGa",gamename);
+		return genreList;
+	}
+	
 
 	public int posting(BoardVO bvo) {
 		int result = session.insert("boardMapper.posting", bvo);
@@ -114,6 +119,11 @@ public class BoardDAO {
 
 	public List<String> getAllGames() {
 		List<String> games =session.selectList("boardMapper.getAllGames");
+		return games;
+	}
+
+	public List<String> genreSearch(String keyword) {
+		List<String> games =session.selectList("boardMapper.recommendGame",keyword);
 		return games;
 	}
 }

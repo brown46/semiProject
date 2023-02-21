@@ -65,13 +65,18 @@ public class BoardService {
 		return gameList;
 	}
 
+	public List<String> getGrGa(String gamename) {
+		BoardDAO dao = new BoardDAO();
+		List<String> genreList= dao.getGrGa(gamename);
+		dao.close();
+		return genreList;
+	}
 	public List<String> getGenre() {
 		BoardDAO dao = new BoardDAO();
 		List<String> genreList= dao.getGenre();
 		dao.close();
 		return genreList;
 	}
-
 	public int posting(BoardVO bvo) {
 		BoardDAO dao = new BoardDAO();
 		int result =dao.posting(bvo);
@@ -150,12 +155,21 @@ public class BoardService {
 	public List<CommentVO> getComment(int postId) {
 		BoardDAO dao = new BoardDAO();
 		List<CommentVO> cList= dao.getComment(postId);
+		dao.close();
 		return cList;
 	}
 
 	public List<String> getAllGames() {
 		BoardDAO dao = new BoardDAO();
 		List<String> games=dao.getAllGames();
+		dao.close();
+		return games;
+	}
+
+	public List<String> genreSearch(String keyword) {
+		BoardDAO dao = new BoardDAO();
+		List<String> games=dao.genreSearch(keyword);
+		dao.close();
 		return games;
 	}
 

@@ -31,6 +31,16 @@
 	<div id="selected">
 	</div>
 	<button id="ensure" type="button">선택 완료</button>
+	
+	<div>
+		<form action="FileUploadTest" method="post" enctype="multipart/form-data">
+            파일<input type="file" name="fileName"><br>
+            <input type="submit" value="업로드">
+        </form>
+	
+	</div>
+	
+	
 	<div>
 		<label>내용</label>
 		<textarea name="contents" cols="50" rows="10"></textarea>

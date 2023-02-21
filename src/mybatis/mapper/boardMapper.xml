@@ -49,6 +49,9 @@
 	<select id="searchGenre" parameterType="kh.member.model.vo.SearchDTO" resultType="string">
 		SELECT GAMENAME FROM GR_GA_T WHERE GENRENAME = #{keyword}
 	</select>
+	<select id="recommendGame" resultType="string">
+		SELECT GAMENAME FROM GR_GA_T WHERE GENRENAME = #{keyword}
+	</select>
 	<select id="getGenre" resultType="string">
 		SELECT * FROM GENRE_T
 	</select>

@@ -19,6 +19,16 @@
 <button id="select">선택 완료</button>
 <div id="selected" style="display:block">
 </div>	
+
+
+
+
+${map }
+
+
+
+
+
 </body>
 
 <script type="text/javascript">
@@ -42,6 +52,7 @@ var input =$("#selected").text();
 		type : "post",
 		success: function(){
 			console.log("ajax 성공");
+			location.href="<%=request.getContextPath()%>/recommendDetail";
 		},
 		error: function(){
 			console.log("실패");

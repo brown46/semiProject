@@ -23,6 +23,7 @@
   	<url-pattern>/myposting/*</url-pattern>
   	<url-pattern>/updateinfo</url-pattern>
   	<url-pattern>/recommend</url-pattern>
+  	<url-pattern>/recommendDetail</url-pattern>
   </filter-mapping>
   
    <servlet-mapping>
