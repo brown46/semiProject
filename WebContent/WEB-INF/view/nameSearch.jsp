@@ -32,10 +32,11 @@
 	
 	
 	<ul>
+			<li>닉네임 |제목 | 날짜 |게임이름</li>
 		<c:forEach var="data" items="${requestScope.dataList }">
 			<%-- <fmt:formatDate type="both" dateStyle="long" timeStyle="long" var="date" value="${data.createDate }"/>--%>
 			<fmt:formatDate type="both" pattern="yyyy년 MM월 dd일 HH시 mm분 ss초" var="date" value="${data.nowDate }"/>
-			<li>${data.nickname } |${data.contents } | ${date } |${data.gameName }</li>
+			<li>${data.nickname } |<a href="<%=request.getContextPath()%>/detail?postId=${data.postId}">${data.postName }</a> | ${data.contents } | ${date } |${data.gameName }</li>
 		</c:forEach>
 	</ul>
 	<div>
