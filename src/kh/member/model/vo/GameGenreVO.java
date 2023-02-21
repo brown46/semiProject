@@ -19,5 +19,9 @@ public class GameGenreVO {
 	public void setGenreName(String genreName) {
 		this.genreName = genreName;
 	}
+	@Override
+	public String toString() {
+		return "GameGenreVO [gameName=" + gameName + ", genreName=" + genreName + "]";
+	}
 	
 }

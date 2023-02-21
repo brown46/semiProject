@@ -1,6 +1,7 @@
 package kh.main.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -12,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import kh.member.model.service.BoardService;
 import kh.member.model.vo.BoardVO;
@@ -44,7 +46,7 @@ public class PostingController extends HttpServlet {
 			List<String> list = new ArrayList<>();
 			System.out.println("input:"+input.trim() );
 			System.out.println("--------------------------");
-			for(String s :input.trim().split("\t")  ) {
+			for(String s :input.trim().split(" ")  ) {
 				list.add(s);
 				System.out.println(s);
 			}
@@ -117,13 +119,34 @@ public class PostingController extends HttpServlet {
 			gg.setGameName(gameTitle);
 			boolean isDup =service.getGGcount(gg);
 			System.out.println(isDup);
+			System.out.println(gg);
 			if(!isDup) {
 				service.addGameGenre(gg);				
 			}
 			
 		}
 		
+		
+//		//파일 업로드
+//		 String fileWriter = request.getParameter("fileWriter");
+//		// 파일 설명
+//		 String fileDescription = request.getParameter("fileDescription");
+//		// 파일 이름
+//		 Part part = request.getPart("fileName");
+//	        String fileName = getFilename(part);
+//	        if (!fileName.isEmpty()) {
+//	            part.write("C:\\uploadTest\\"+fileName);
+//	        }
+//		
+//	        // 응답 작성
+//	        PrintWriter out = response.getWriter();
+//	        out.print("작성자: " + fileWriter + "<br>");
+//	        out.print("파일명:<a href='FileDownloadTest?fileName=" + fileName + "'> " + fileName + "</a href><br>"); 
+//	        out.print("파일설명: "+ fileDescription + "<br>"); // 다운로드 추가
+//	        out.print("파일크기: " + part.getSize() + " bytes" + "<br>");
+		
 		response.sendRedirect(request.getContextPath()+"/board");
 	}
+
 
 }

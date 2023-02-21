@@ -45,7 +45,7 @@ public class RecommendDetail extends HttpServlet {
 		for (int i = entryList.size() - 1; i >=  entryList.size()-3 ; i--) {
 //	          System.out.println("key : " + entryList.get(i).getKey() + ", value : " + entryList.get(i).getValue());
 	          top3.add(entryList.get(i).getKey());
-	        }//상위 3개 장르 
+	        }//상위 3개 장르. 중복이 3개 이상이 아니라면 오류난다.
 		System.out.println(top3);
 		request.setAttribute("top3", top3);
 		List<String> list0 = service.genreSearch(top3.get(0));

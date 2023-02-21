@@ -59,8 +59,9 @@ function handlerClickBtnDupChk(){
         $("#dupChk").after(error);
     }
 	console.log("btnEnroll눌림");
-	// alert('${idCount}');
-}</script>
+
+}
+</script>
 
 </body>
 </html>
