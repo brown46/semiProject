@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,64 +13,83 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp" />
-<br>
-<div>
-	게시글 이름 ${post.postName }
-</div>
-<div>
-닉네임  ${post.nickname }
-</div>
-<div>
-게임 이름 ${post.gameName }
-</div>
-<div>
-게임 장르 ${genreList }
-</div>
-<div>
-작성일  ${post.nowDate }
-</div>
-<div>
-게임 스크린샷
-</div>
-<div>
-<img alt="" src="${imgPath }">
-</div>
-
-<div>
-내용
-${post.contents }
-</div>
+<fmt:formatDate type="both" pattern="yyyy/MM/dd/HH:mm" var="pdate" value="${post.nowDate }"/>
 
 
-<div>
-댓글
-<br>
-닉네임 | 작성일 | 댓글 내용	
-<ul>
-<c:forEach items="${cList }" var="cl">
-<li>${cl.nickname} | ${cl.nowdate} | ${cl.cmt}</li> 
-</c:forEach>
-</ul>
-</div>
-<div>
-<c:choose>
-<c:when test="${! empty lgnss}">
-	<form action="./detail" method="post">
-		<input  name="postid" type="hidden" value="${post.postId }">
-		<label>댓글작성</label>
-		<input id="input" name="comment" size="100px">
-			<button disabled id="submit">작성</button>	
-	</form>
-</c:when>
+
+<div class="container my-3">
+    <!-- 질문 -->
+    <div class="border-bottom py-2"><h5 class="card-title">게시글 제목: ${post.postName }</h5> <span class="card-subtitle"  >게임이름: ${post.gameName }</span></div>
+    	<br>
+    	<div style="float: right">
+ 		   	닉네임: ${post.nickname }
+    	</div>
+ 		   	<br>
+ 		 <div>장르: ${genreList } <span style="float: right">${pdate}</span> </div>
+ 		 
+ 		 <img alt="" src="${imgPath }">
+    <div class="card my-3 ">
+        <div class="card-body" >
+            <div class="card-text" style="white-space: pre-line;"> ${post.contents } </div>
+            <div class="d-flex justify-content-end">
+                <div class="badge bg-light text-dark p-2">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+   
+    <!-- 답변 목록 -->
+    <h5 class="border-bottom my-3 py-2" style="margin-top:200px">댓글 목록</h5>
+    <c:forEach items="${cList }" var="cl">
+    <fmt:formatDate type="both" pattern="yyyy/MM/dd/HH:mm" var="date" value="${cl.nowdate }"/>
+    ${cl.nickname}
+    <div class="card my-3">
+        <div class="card-body">
+            <div class="card-text" style="white-space: pre-line;">${cl.cmt}</div>
+            <div class="d-flex justify-content-end">
+                <div class="badge bg-light text-dark p-2">
+                    ${date}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </c:forEach>
+    
+
+    
+
+    <!-- 댓글 등록 -->
+  <c:choose>
+<c:when test="${! empty lgnss}"> 
+    <form action="./detail" method="post" class="my-3">
+        <div class="mb-3">
+        	<input  name="postid" type="hidden" value="${post.postId }">
+       		 <input class="form-control" rows="10" id="input" name="comment" size="100px">
+			<button class="btn btn-primary" disabled id="submit">작성</button>	
+
+        </div>
+    </form>
+    </c:when>
 <c:otherwise>
-	<input name="postid" type="hidden" value="${post.postId }">
+    <input name="postid" type="hidden" value="${post.postId }">
 	<label>댓글작성</label>
-	<input id="textarea" name="comment" size="100px">
-	<button id="dummy" type="button">작성</button>	
+	<input class="form-control"  rows="10" id="textarea" name="comment">
+	<button class="btn btn-primary" id="dummy" type="button">작성</button>	
 </c:otherwise>
 </c:choose>
-
 </div>
+
+
+
 
 
 <script type="text/javascript">

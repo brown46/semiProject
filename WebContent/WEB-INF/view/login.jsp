@@ -9,6 +9,7 @@
 <%@ include file="/WEB-INF/view/module/css_js_import.jsp" %>
 </head>
 <body>
+<jsp:include page="/WEB-INF/view/header.jsp" />
 	<form action="./login" method="post">
 		<div>
 			<label>아이디 :</label>		

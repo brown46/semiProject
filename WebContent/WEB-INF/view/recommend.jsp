@@ -18,12 +18,14 @@
 
 <div>
 	<c:forEach var="g" items="${games }">
-		<a name="gname" href="#">${g }</a>
+		<a style="text-decoration:none" name="gname" href="#">${g }</a>
 	</c:forEach>
 </div>
-<button id="select">선택 완료</button>
 <div id="selected" style="display:block">
 </div>	
+<div>
+<button id="select">선택 완료</button>
+</div>
 
 
 
@@ -40,7 +42,7 @@ ${map }
 
 $("a[name=gname]").on("click",selectGame);
 function selectGame() {
-	$(this).removeAttr("href");
+	$(this).remove();
 	console.log($(this).text());
 
 	var span= document.createElement("span");

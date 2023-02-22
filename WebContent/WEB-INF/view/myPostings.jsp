@@ -13,12 +13,13 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp" />	
-	<h2>내 게시물 목록</h2>
+	<div class="container">
+		<h2>내 게시물 목록</h2>
+	</div>	
 	<c:url var="mypostingUrl" value="/myposting" />
 
-	
 	<form action="${mypostingUrl }">
-		<div>
+		<div class="container">
 			<select name="cnt" onchange="submit();">
 				<option value="2"${requestScope.cnt eq 2 ? "selected" : "" }>2개</option>
 				<option value="10"${requestScope.cnt eq 10 ? "selected" : "" }>10개</option>
@@ -30,39 +31,76 @@
 		</div>	
 	</form>	
 	
+	<div class="container">
 	
-	
-	<ul>
-	<li>닉네임 |제목 | 날짜 |게임이름</li>
-		<c:forEach var="data" items="${requestScope.dataList }">
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr>
+					<th class="col-1" >글 번호</th>
+					<th>게임 이름</th>
+					<th class="col-6">게시글 제목</th>
+					<th>닉네임</th>
+					<th class="col-1">날짜</th>
+				</tr>
+			</thead>
+			<tbody>
+					<c:forEach var="data" items="${requestScope.dataList }">
+					<fmt:formatDate type="both" pattern="yyyy/MM/dd/HH:mm" var="date" value="${data.nowDate }"/>
+				<tr>
+					<td>${data.postId }</td>
+					<td>${data.gameName }</td>
+					<td><a style="text-decoration:none" href="<%=request.getContextPath()%>/detail?postId=${data.postId}">${data.postName }</a> </th>
+					<td>${data.nickname }</td>
+					<td>${date }</td>
+				</tr>
+					</c:forEach>
 			
-			<fmt:formatDate type="both" pattern="yyyy년 MM월 dd일 HH시 mm분 ss초" var="date" value="${data.nowDate }"/>
-			<li>${data.nickname } | <a href="<%=request.getContextPath()%>/detail?postId=${data.postId}">${data.postName }</a> | ${date } |${data.gameName }</li>
-		</c:forEach>
-	</ul>
-	<div>
+			</tbody>
+		
+		</table>
+		<div >
+		<ul class="pagination">
 		<c:set var="pageNumber" value="${empty param.p ? 1 : param.p }" />
 		<c:choose>
 			<c:when test="${pageNumber eq 1 }">
-				<a>prev</a>
+			<li class="page-item">
+				<a class="page-link">prev</a>
+			</li>
 			</c:when>
 			<c:otherwise>
-				<a href="${mypostingUrl }?p=${pageNumber-1}">prev</a>
+			<li class="page-item">
+				<a class="page-link" href="${mypostingUrl }?p=${pageNumber-1}">prev</a>
+			</li>
 			</c:otherwise>
 		</c:choose>
-		<c:forEach var="i" begin="${requestScope.pageStart }" end ="${requestScope.pageEnd}">
-			<a href="${mypostingUrl }?p=${i } ">${i }</a>
+		<c:forEach var="i" begin="${requestScope.pageStart }" end="${requestScope.pageEnd}">
+			<li class="page-item ${i eq pageNumber ? 'active':'' }">
+				<a class="page-link"  href="${mypostingUrl }?p=${i }">${i }</a>
+			</li>
 		</c:forEach>
 		<c:choose>
 			<c:when test="${pageNumber eq pageEnd }">
-				<a>next</a>
+			<li class="page-item">
+				<a class="page-link">next</a>
+			</li>	
 			</c:when>
-		
+			<c:when test="${pageEnd eq 0 }">
+			<li class="page-item">
+				<a class="page-link" >next</a>
+			</li>
+			</c:when>
 			<c:otherwise>
-				<a href="${mypostingUrl }?p=${pageNumber+1}">next</a>
+			<li class="page-item">
+				<a class="page-link" href="${mypostingUrl }?p=${pageNumber+1}">next</a>
+			</li>
 			</c:otherwise>
 		</c:choose>
-
+		</ul>
+		</div>
 	</div>
+	
 </body>
+<script type="text/javascript">
+$('.my-select').selectpicker();
+</script>
 </html>
