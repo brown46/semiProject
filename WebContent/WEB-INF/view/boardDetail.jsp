@@ -28,7 +28,7 @@
 </div>
 <div>
 게임 스크린샷
-<img alt="" src="">
+<img alt="" src="${imgPath }">
 </div>
 
 <div>
@@ -40,8 +40,8 @@ ${post.contents }
 <div>
 댓글
 <br>
-<ul>
 닉네임 | 작성일 | 댓글 내용	
+<ul>
 <c:forEach items="${cList }" var="cl">
 <li>${cl.nickname} | ${cl.nowdate} | ${cl.cmt}</li> 
 </c:forEach>

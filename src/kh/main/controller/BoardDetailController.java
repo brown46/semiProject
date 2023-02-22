@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -52,9 +53,33 @@ public class BoardDetailController extends HttpServlet {
 		ArrayList<String> genreList= new ArrayList<String>(service.getGenre(post.getGameName()));
 		request.setAttribute("genreList", genreList);
 
+		
+		
+		//이름 받아오기 
+		
+		String savePath = "upload";//다운로드 폴더 이름
+//		ServletContext context = getServletContext();
+//		String uploadFilePath = context.getRealPath(savePath);
+//		System.out.println(uploadFilePath); //전체파일 경로
+		
+		String imgName= service.getImgName(postId);
+		
+//		String imgPath = uploadFilePath+"\\"+imgName;
+		String imgPath = request.getContextPath()+"/"+savePath+"/"+imgName;
+		System.out.println(imgPath);
+		
+		//이미지가 null이 아니면 jsp로 보낸다.
+		if(imgName!=null) {
+			request.setAttribute("imgPath", imgPath);
+		}
+		
+		
 		//댓글 받아오기
 		List<CommentVO> cList= service.getComment(postId);
 		request.setAttribute("cList", cList);
+		
+		
+		
 		
 		
 		request.getRequestDispatcher("/WEB-INF/view/boardDetail.jsp").forward(request,response);

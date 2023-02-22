@@ -70,7 +70,7 @@ public class UploadFileController extends HttpServlet {
 		
 		if(imgName==null) {
 			System.out.print("파일 업로드 되지 않았음");
-		}else { // 파일이 업로드 되었을때ㅋ
+		}else { // 파일이 업로드 되었을때
 			request.getSession().setAttribute("imgName",  multi.getParameter("imgName"));
 			out.println("<br> 파일명 : " + imgName);
 			imgName="임의변환";

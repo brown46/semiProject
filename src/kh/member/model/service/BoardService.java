@@ -196,6 +196,13 @@ public class BoardService {
 		return pid;
 	}
 
+	public String getImgName(int postId) {
+		BoardDAO dao = new BoardDAO();
+		String imgName = dao.getImgName(postId);
+		dao.close();
+		return imgName;
+	}
+
 
 
 

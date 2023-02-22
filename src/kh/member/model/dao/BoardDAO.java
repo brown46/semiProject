@@ -142,4 +142,9 @@ public class BoardDAO {
 		int pid = session.selectOne("boardMapper.getLastPID");
 		return pid;
 	}
+
+	public String getImgName(int postId) {
+		String imgName = session.selectOne("boardMapper.getImgName",postId);
+		return imgName;
+	}
 }

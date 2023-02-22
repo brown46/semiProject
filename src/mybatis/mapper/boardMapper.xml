@@ -107,4 +107,7 @@
 	<select id="getLastPID" resultType="int">
 		SELECT NVL(MAX(POSTID), 0) FROM POST_T
 	</select>
+	<select id="getImgName" parameterType="int" resultType="String">
+		SELECT IMGNAME FROM IMG_T WHERE POSTID =#{postId}
+	</select>
 </mapper>
