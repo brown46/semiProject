@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,9 +16,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import kh.member.model.service.BoardService;
 import kh.member.model.vo.BoardVO;
 import kh.member.model.vo.GameGenreVO;
+import kh.member.model.vo.ImgVO;
 import kh.member.model.vo.MemberVO;
 
 /**
@@ -68,6 +73,19 @@ public class PostingController extends HttpServlet {
 		String gameTitle= request.getParameter("gameTitle");
 		String contents = request.getParameter("contents");
 
+		//이미지 이름
+		String rawname ="";
+		String[] splitname=null;
+		String img ="";
+		if(request.getParameter("img").length()!=0) {
+			rawname = request.getParameter("img");
+			splitname= rawname.split("\\\\") ;
+			img = splitname[2]; 
+		}
+//		C:\fakepath\화면 캡처 2023-02-16 112851.png
+		
+		System.out.println("이미지 이름: "+img);
+		
 		//게시글 처리
 		MemberVO mvo =  (MemberVO) request.getSession().getAttribute("lgnss");
 		
@@ -96,7 +114,7 @@ public class PostingController extends HttpServlet {
 		bvo.setNickname(mvo.getNickname());
 		bvo.setGameName(gameTitle);
 		bvo.setContents(contents);
-		
+	
 		if(count==0) {
 			service.addGame(gameTitle);
 		}
@@ -127,23 +145,41 @@ public class PostingController extends HttpServlet {
 		}
 		
 		
-//		//파일 업로드
-//		 String fileWriter = request.getParameter("fileWriter");
-//		// 파일 설명
-//		 String fileDescription = request.getParameter("fileDescription");
-//		// 파일 이름
-//		 Part part = request.getPart("fileName");
-//	        String fileName = getFilename(part);
-//	        if (!fileName.isEmpty()) {
-//	            part.write("C:\\uploadTest\\"+fileName);
-//	        }
+		
+		//이미지 처리
+//		PrintWriter out = response.getWriter();
+//		String savePath = "upload";//다운로드 경로
+//		int uploadFileSizeLimit = 5 * 1024 * 1024;
+//		String encType = "UTF-8";
+//		ServletContext context = getServletContext();
+//		String uploadFilePath = context.getRealPath(savePath);
+//		System.out.println("서버상의 실제 디렉토리 :"+uploadFilePath);
 //		
-//	        // 응답 작성
-//	        PrintWriter out = response.getWriter();
-//	        out.print("작성자: " + fileWriter + "<br>");
-//	        out.print("파일명:<a href='FileDownloadTest?fileName=" + fileName + "'> " + fileName + "</a href><br>"); 
-//	        out.print("파일설명: "+ fileDescription + "<br>"); // 다운로드 추가
-//	        out.print("파일크기: " + part.getSize() + " bytes" + "<br>");
+//		MultipartRequest multi = new MultipartRequest(request, uploadFilePath, uploadFileSizeLimit, encType,new DefaultFileRenamePolicy());
+//		String imgName = multi.getFilesystemName("uploadFile");
+//		request.getSession().setAttribute("imgName",  multi.getParameter("imgName"));
+		
+		//img길이가 0이 아닐 때 조건 추가
+		if(img.length()!=0) {
+			ImgVO imgvo = new ImgVO();			
+			int pid= service.getLastPID();
+//			imgvo.setImgName("임시이름");
+			imgvo.setImgName(img);
+			imgvo.setPostId(pid);//postid를 받아와야됨
+			System.out.println("확인");
+			System.out.println(imgvo);		
+			int imgResult=0;
+			int imgCount=1;
+			//이미지 업로드는 하나만
+			imgCount = service.getImgCount(imgvo);
+			System.out.println(imgCount);
+			//이미 있다면 업데이트. 나중에 추가 
+			
+			if(imgCount==0) {
+				imgResult= service.uploadImg(imgvo);
+			}
+		
+		}
 		
 		response.sendRedirect(request.getContextPath()+"/board");
 	}

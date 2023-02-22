@@ -11,6 +11,11 @@
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp" />
 
+
+<div>
+선호하는 게임들을 선택해 주세요
+</div>
+
 <div>
 	<c:forEach var="g" items="${games }">
 		<a name="gname" href="#">${g }</a>

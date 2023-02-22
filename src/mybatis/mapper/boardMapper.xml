@@ -97,4 +97,14 @@
 	<select id="getAllGames" resultType="string">
 		SELECT * FROM GAME_T
 	</select>
+	<select id="getImgCount" parameterType="kh.member.model.vo.ImgVO" resultType="int">
+		SELECT COUNT(*) FROM IMG_T WHERE POSTID =#{postId}
+	</select>
+	<insert id="uploadImg" parameterType="kh.member.model.vo.ImgVO">
+		INSERT INTO IMG_T VALUES(#{imgName}, #{postId})
+	</insert>	
+	
+	<select id="getLastPID" resultType="int">
+		SELECT NVL(MAX(POSTID), 0) FROM POST_T
+	</select>
 </mapper>

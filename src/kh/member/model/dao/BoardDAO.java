@@ -9,6 +9,7 @@ import connect.OracleConnection;
 import kh.member.model.vo.BoardVO;
 import kh.member.model.vo.CommentVO;
 import kh.member.model.vo.GameGenreVO;
+import kh.member.model.vo.ImgVO;
 import kh.member.model.vo.SearchDTO;
 
 public class BoardDAO {
@@ -125,5 +126,20 @@ public class BoardDAO {
 	public List<String> genreSearch(String keyword) {
 		List<String> games =session.selectList("boardMapper.recommendGame",keyword);
 		return games;
+	}
+
+	public int getImgCount(ImgVO img) {
+		int count = session.selectOne("boardMapper.getImgCount",img);
+		return count;
+	}
+
+	public int uploadImg(ImgVO img) {
+		int result = session.insert("boardMapper.uploadImg",img);
+		return result;
+	}
+
+	public int getLastPID() {
+		int pid = session.selectOne("boardMapper.getLastPID");
+		return pid;
 	}
 }

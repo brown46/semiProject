@@ -9,6 +9,7 @@ import kh.member.model.dao.BoardDAO;
 import kh.member.model.vo.BoardVO;
 import kh.member.model.vo.CommentVO;
 import kh.member.model.vo.GameGenreVO;
+import kh.member.model.vo.ImgVO;
 import kh.member.model.vo.SearchDTO;
 
 public class BoardService {
@@ -171,6 +172,28 @@ public class BoardService {
 		List<String> games=dao.genreSearch(keyword);
 		dao.close();
 		return games;
+	}
+
+	public int getImgCount(ImgVO img) {
+		BoardDAO dao = new BoardDAO();
+		int count =dao.getImgCount(img);
+		dao.close();
+		return count;
+	}
+
+	public int uploadImg(ImgVO img) {
+		BoardDAO dao = new BoardDAO();
+		int result =dao.uploadImg(img);
+		dao.commit();
+		dao.close();
+		return result;
+	}
+
+	public int getLastPID() {
+		BoardDAO dao = new BoardDAO();
+		int pid = dao.getLastPID();
+		dao.close();
+		return pid;
 	}
 
 
