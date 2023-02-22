@@ -45,7 +45,7 @@
 	</form>
 	
 <form id="uploadForm" action="./uploadfile" enctype="multipart/form-data" method="post">
-		<input type="file" name="uploadFile"><br>
+		<input  type="file" name="uploadFile"><br>
 		<button id="filebtn" type="button">파일 업로드</button>
 </form>	
 	

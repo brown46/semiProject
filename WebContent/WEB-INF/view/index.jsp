@@ -16,7 +16,7 @@
 
 <img alt="" src="">
 
-<object data=""></object>	
+	
 <form action="./search">
 
 <select name="kinds">

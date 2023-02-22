@@ -55,7 +55,7 @@ function handlerClickBtnDupChk(){
         if( $("#dupChk").next()!==null){
             $("#dupChk").next().remove();
         }
-        var error= createErrormessage("fill all");
+        var error= createErrormessage("아이디와 닉네임을 모두 입력해 주세요");
         $("#dupChk").after(error);
     }
 	console.log("btnEnroll눌림");

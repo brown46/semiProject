@@ -28,6 +28,8 @@
 </div>
 <div>
 게임 스크린샷
+</div>
+<div>
 <img alt="" src="${imgPath }">
 </div>
 
