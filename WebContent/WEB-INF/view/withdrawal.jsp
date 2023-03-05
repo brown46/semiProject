@@ -10,11 +10,14 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp" />
+<div class="container mt-5">
 <h4>정말로 탈퇴하시겠습니까?</h4>
-작성했던 게시물들이 삭제됩니다.
+작성했던 게시물들까지 삭제됩니다.
+
 <form action="./withdrawal" method="post">
-	<button id="withdrawal" type="button">탈퇴</button>
+	<button class="mt-3  btn btn-danger" id="withdrawal" type="button">탈퇴</button>
 </form>
+</div>
 </body>
 <script type="text/javascript">
 

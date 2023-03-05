@@ -6,7 +6,7 @@ window.onload= function validCheck(){
             form.id.nextElementSibling.remove();
         }
         if(form.id.value.length<1||form.id.value.length>20){
-            var error= createErrormessage("1~20 사이");
+            var error= createErrormessage("1자 이상 20자 이하로 입력해주세요");
             form.id.after(error);
         }
     });
@@ -15,7 +15,7 @@ window.onload= function validCheck(){
             form.nickname.nextElementSibling.remove();
         }
         if(form.nickname.value.length<1||form.nickname.value.length>20){
-            var error= createErrormessage("1~20 사이");
+            var error= createErrormessage("1자 이상 20자 이하로 입력해주세요");
             form.nickname.after(error);
         }
     });
@@ -27,7 +27,7 @@ window.onload= function validCheck(){
             form2.email.nextElementSibling.remove();
         }
         if(form2.email.value.length<1 || form2.email.value.length>40){
-            var error= createErrormessage("1자 이상 40자 이하");
+            var error= createErrormessage("1자 이상 40자 이하로 입력해주세요");
             form2.email.after(error);
         }
     });
@@ -37,7 +37,7 @@ window.onload= function validCheck(){
             form2.email.nextElementSibling.remove();
         }
         if(form2.email.value.length<2){
-            var error= createErrormessage("1자 이상 40자 이하");
+            var error= createErrormessage("1자 이상 40자 이하로 입력해주세요");
             form2.email.after(error);
         }
     });
@@ -52,7 +52,7 @@ window.onload= function validCheck(){
             form2.password.nextElementSibling.remove();
         }
         if(form2.password.value.length< 6||form2.password.value.length>20){
-            var error= createErrormessage("6~20 사이");
+            var error= createErrormessage("6자 이상 20자 이하로 입력해주세요");
             form2.password.after(error);
         }
     });
@@ -62,7 +62,7 @@ window.onload= function validCheck(){
             form2.passwordChk.nextElementSibling.remove();
         }
         if(form2.password.value !== form2.passwordChk.value){
-            var error= createErrormessage("password not correct");
+            var error= createErrormessage("비밀번호가 일치하지 않습니다.");
             form2.passwordChk.after(error);
         }
     });

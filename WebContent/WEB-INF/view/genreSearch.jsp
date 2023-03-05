@@ -37,7 +37,7 @@
 	</form>
           <ul class="list-group">
             <c:forEach var="data" items="${requestScope.dataList }">
-			<li class="list-group-item"><a href="<%=request.getContextPath()%>/search?kinds=name&keyword=${data }">${data }</a></li>
+			<li class="list-group-item"><a style="text-decoration:none" href="<%=request.getContextPath()%>/search?kinds=name&keyword=${data }">${data }</a></li>
 			</c:forEach>
           </ul>
           

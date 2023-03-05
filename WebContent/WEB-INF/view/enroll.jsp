@@ -8,41 +8,44 @@
 <meta charset="UTF-8">
 <title>회원 가입 페이지</title>
 <%@ include file="/WEB-INF/view/module/css_js_import.jsp" %>
+<script src="https://code.jquery.com/jquery-3.6.3.js" charset="UTF-8"></script>
+<script src="./resource/js/myJavascript.js" type="text/javascript" charset="UTF-8"></script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp" />	
+	<div class="container">
 	<form action="./dupChk" method="post">
 		<div>
-			<label>아이디 :</label>		
-			<input type="text" name=id  >
+			<label class="mt-3">아이디 :</label>		
+			<input class="form-control w-50" type="text" name=id  >
 			
 		</div>
 
 		<div>
-			<label>닉네임 :</label>		
-			<input type="text" name=nickname >
+			<label class="mt-3">닉네임 :</label>		
+			<input class="form-control w-50" type="text" name=nickname >
 		</div>
-			<button id="dupChk" type="button" >아이디/닉네임 중복 체크</button>
+			<button class="mt-3 w-25 btn btn-lg btn-primary" id="dupChk" type="button" >아이디/닉네임 중복 체크</button>
 	</form>	
 	<form action="./enroll" method="post">
 		<div>
-			<label>이메일 :</label> 
-			<input type="text" name=email>		
+			<label class="mt-3">이메일 :</label> 
+			<input class="form-control w-50" type="text" name=email>		
 		</div>
 		<div>
-			<label>비밀번호 :</label> 
-			<input type="password" name=password>
+			<label class="mt-3">비밀번호 :</label> 
+			<input class="form-control w-50" type="password" name=password>
 		</div>
 		<div>
-			<label>비밀번호 확인 :	</label> 		
-			<input type="password" name=passwordChk>
+			<label class="mt-3">비밀번호 확인 :	</label> 		
+			<input class="form-control w-50" type="password" name=passwordChk>
 		</div>
 		
 		
-		<button type="submit">회원 가입</button>
+		<button class="mt-3 w-25 btn btn-lg btn-primary" type="submit">회원 가입</button>
 		
 	</form>
-
+	</div>
 <script type="text/javascript">
 $("#dupChk").on("click",handlerClickBtnDupChk);
 function handlerClickBtnDupChk(){
@@ -65,6 +68,5 @@ function handlerClickBtnDupChk(){
 
 </body>
 </html>
-<script src="https://code.jquery.com/jquery-3.6.3.js" charset="UTF-8"></script>
-<script src="./resource/js/myJavascript.js" type="text/javascript" charset="UTF-8"></script>
+
 

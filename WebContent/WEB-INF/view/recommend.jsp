@@ -12,25 +12,24 @@
 <jsp:include page="/WEB-INF/view/header.jsp" />
 
 
-<div>
-선호하는 게임들을 선택해 주세요
+<div class="container mt-5">
+<h2>선호하는 게임들을 선택해 주세요</h2>
 </div>
 
-<div>
+<div class="container mt-3">
 	<c:forEach var="g" items="${games }">
-		<a style="text-decoration:none" name="gname" href="#">${g }</a>
+		<a style="text-decoration:none" name="gname" href="#">${g }</a>/ 
 	</c:forEach>
 </div>
-<div id="selected" style="display:block">
+<div class="container mt-3" id="selected" style="display:block">
 </div>	
-<div>
-<button id="select">선택 완료</button>
+<div class="container  mt-3">
+<button class="btn btn-primary" id="select">선택 완료</button>
 </div>
 
 
 
 
-${map }
 
 
 

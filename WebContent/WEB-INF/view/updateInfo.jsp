@@ -11,10 +11,11 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp" />	
+	<div class="container mt-3">
 	<div id= checkpassword >
-		<h4>비밀번호를 다시 한번 입력해 주십시오</h1>
-		<input id=inputpass type="password"> 
-		<button id="check" type="button">비밀번호 확인</button>
+		<h4>비밀번호를 다시 한번 입력해 주십시오</h4>
+		<input class="form-control w-50" id=inputpass type="password"> 
+		<button class="mt-3 btn btn-primary" id="check" type="button">비밀번호 확인</button>
 		<span id="error"></span>
 	</div>
 	
@@ -22,23 +23,23 @@
 		<div >
 			<form action="./updateinfo" method="post">
 				<label>닉네임 수정</label>
-				<input name="nickname" value="${info.nickname }">
+				<input class="form-control w-50" name="nickname" value="${info.nickname }">
 				<label>이메일 수정</label>
-				<input name="email" value="${info.email }"> 	
-				
+				<input class="form-control w-50" name="email" value="${info.email }"> 	
+					
 					
 		<br>
 		
 			
 				<label>새 비밀번호 </label>
-				<input name="newPwd" type="password">
+				<input class="form-control w-50" name="newPwd" type="password">
 				<label>비밀번호 확인</label>
-				<input name="chkNewPwd" type="password"> 	
-				<button id="post" type="button">변경</button> 
+				<input class="form-control w-50" name="chkNewPwd" type="password"> 	
+				<button class="mt-3 w-25 btn btn-lg btn-primary" id="post" type="button">변경</button> 
 			</form>
 		</div>
 	</div>
-
+	</div>
 	
 </body>
 <script type="text/javascript">

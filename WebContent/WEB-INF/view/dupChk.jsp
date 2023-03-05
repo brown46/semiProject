@@ -10,10 +10,10 @@
 </head>
 <body>
 <c:choose>
-	<c:when test="${nickCount eq 0 && idCount eq 0 }"><h1>중복 아님</h1></c:when>
-	<c:when test="${nickCount eq 0 && idCount ne 0 }"><h1>아이디 중복</h1></c:when>
-	<c:when test="${nickCount ne 0 && idCount eq 0 }"><h1>닉네임 중복</h1></c:when>
-	<c:when test="${nickCount ne 0 && idCount ne 0 }"><h1>둘다 중복</h1></c:when>
+	<c:when test="${nickCount eq 0 && idCount eq 0 }"><h1>사용가능한 아이디와 닉네임입니다.</h1></c:when>
+	<c:when test="${nickCount eq 0 && idCount ne 0 }"><h1>중복된 아이디가 존재합니다.</h1></c:when>
+	<c:when test="${nickCount ne 0 && idCount eq 0 }"><h1>중복된 닉네임이 존재합니다.</h1></c:when>
+	<c:when test="${nickCount ne 0 && idCount ne 0 }"><h1>중복된 아이디와 닉네임이 존재합니다.</h1></c:when>
 </c:choose>
 
 </body>
